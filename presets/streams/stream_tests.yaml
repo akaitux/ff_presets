@@ -1,0 +1,35 @@
+# Здесь должно быть описания списка видео, аудио  c именами пресетов
+name: stream_tests
+
+ffmpeg_params:
+  - deinterlace
+  - fflags: "+genpts"
+  - vsync: 0
+hwaccel: cuda
+hwaccel_device: 0
+vdecoder: h264_cuvid
+
+input:
+  - addr: "http://input"
+    maps:
+      - 0
+      - 0: 0
+      - 0: v
+      - 0: "p:1344"
+      - i: "0x401"
+  - "http://..."
+output:
+    - video_preset: 'fullhd_tests'
+      audio_preset: 'aac_tests'
+      format: 'flv'
+      outputs:
+        - select: "v:0,a"
+          addr: local0
+          onfail: ignore
+        - select: "v:0,a"
+          format: flv
+          addr: rtmp://server0/app/instance
+      hls_params:
+        hls_param1: 123
+        hls_param2: 456
+

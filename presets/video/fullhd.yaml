@@ -1,0 +1,15 @@
+codec: libx264
+pix_fmt: yuv420p
+profile: baseline
+preset: fast
+tune: grain
+aspect: 16:9
+size: 1920x1080
+x264_params:
+  - level: 31
+  - keyint: 25
+  - fps: 25
+  - ref: 3
+  - no-scenecut
+  - vbv_maxrate: 6096
+  - vbv_bufsize: 6096

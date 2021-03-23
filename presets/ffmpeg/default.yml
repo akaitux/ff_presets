@@ -1,0 +1,4 @@
+- re
+- rtbufsize: 2G
+- deinterlace
+- fflags: "+genpts"

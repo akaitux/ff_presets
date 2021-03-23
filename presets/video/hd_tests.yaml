@@ -1,0 +1,36 @@
+vframes: 20
+fps: 20
+size: 1280x720
+codec: tratata
+bitrate: 200k
+profile: baseline
+level: 3.0
+refs: 1
+gop: 250
+aspect: 16:9
+preset: high
+qscale: 1
+bf: 2
+crf: 25
+maxrate: 25m
+x264_params:
+  - level: 31
+  - keyint: 25
+  - fps: 25
+  - ref: 3
+  - no-scenecut
+  - vbv_maxrate: 6096
+    vbv_bufsize: 6096
+
+filter_chains:
+  - name: chain1
+    filters:
+      - name: yadif
+        values:
+          - 0
+          - 0
+          - 0
+      - name: drawtext
+        values:
+          - text: hey
+      - pullup

@@ -1,0 +1,22 @@
+codec: h264_nvenc
+profile: high 
+preset: llhq
+aspect: "16:9"
+#size: 1920x1080
+level: 4.1
+bitrate: 7M
+maxrate: 7M
+bufsize: 14M
+forced-idr: true
+force_key_frames: "expr:gte(t,n_forced*2)"
+filter_chains:
+    - name: scale
+      filters:
+        - hwupload_cuda
+        - name: scale_npp
+          values:
+            - w: 1920
+            - h: 1080
+            - interp_algo: lanczos
+        - 'yadif_cuda=0:-1:1' # frame-to-frame, auto, only interlaces
+    

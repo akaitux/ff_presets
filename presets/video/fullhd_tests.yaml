@@ -1,0 +1,57 @@
+vframes: 20
+fps: 20
+size: 1920x1080
+codec: tratata
+bitrate: 200k
+profile: baseline
+level: 3.0
+refs: 1
+gop: 250
+no_scenecut: true
+bufsize: '25m'
+aspect: "16:9"
+preset: high
+qscale: 1
+bf: 2
+crf: 25
+maxrate: 25m
+rc: vbr_hq
+additional_params: '-test 123 -test2 "test"'
+rc-lookahead: 32
+cq: 20
+tune: zerolatency
+zerolatency: true
+spatial-aq: 1
+aq-strength: 12
+coder: cabac
+force_key_frames: "expr:gte(t,n_forced*2)"
+forced-idr: true
+cbr: true
+x264_params:
+  - level: 31
+  - ref: 3
+  - no-scenecut
+  - vbv_maxrate: 6096
+x265_params:
+  - level: 31
+  - ref: 3
+  - no-scenecut
+  - vbv_maxrate: 6096
+
+filter_chains:
+  - name: chain1
+    filters:
+      - name: yadif
+        values:
+          - 0
+          - 0
+          - 0
+      - name: drawtext
+        values:
+          - text: hey
+      - pullup
+      - hwupload_cuda
+  - name: chain2
+    filters:
+      - some_filter
+output_ts_offset: "$(date +%s.%N)"

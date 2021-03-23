@@ -1,0 +1,4 @@
+codec: aac
+bitrate: 128k
+sample_rate: 44100
+ac: 2
