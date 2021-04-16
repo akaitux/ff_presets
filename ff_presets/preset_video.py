@@ -27,12 +27,12 @@ class PVideo(_Preset):
             self._src = read_yaml(self.path)
         else:
             self._src = copy.deepcopy(src)
+        self._cmd.append(self.size)
         self._cmd.append(self.codec)
         self._cmd.append(self.pix_fmt)
         self._cmd.append(self.crf)
         self._cmd.append(self.vframes)
         self._cmd.append(self.fps)
-        self._cmd.append(self.size)
         self._cmd.append(self.no_scenecut)
         self._cmd.append(self.bitrate)
         self._cmd.append(self.maxrate)
